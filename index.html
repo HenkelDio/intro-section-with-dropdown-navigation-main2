@@ -134,12 +134,16 @@
       
   }
 
-  .features__menu li, .features__menu a{
+  .features__menu_header li, .features__menu_header a{
       text-decoration: none;
       list-style: none;
   }
+  .features__menu li,   .features__menu_header a{
+    text-decoration: none;
+    list-style: none;
+  }
 
-  .features__menu li{
+  .features__menu_header li{
       margin-bottom: 10px;
   }
 
@@ -155,12 +159,19 @@
       border-radius: 10px;
   }
 
-  .company__menu li, .company__menu a{
+  .company__menu_header li, 
+  .company__menu_header a{
       text-decoration: none;
       list-style: none;
   }
 
-  .company__menu li{
+  .company__menu li, 
+  .company__menu a{
+      text-decoration: none;
+      list-style: none;
+  }
+
+  .company__menu_header li{
       margin-bottom: 10px;
   }
 
@@ -528,7 +539,7 @@
       <nav>
         <ul class="menu__header">
           <ul><a class="features" href="#">Features</a><img class='arrow' src="./images/icon-arrow-down.svg">
-            <div class="features__menu" style="display: none;">
+            <div class="features__menu_header" style="display: none;">
               <li><img src="./images/icon-todo.svg"><a href="#">Todo List</a></li>
               <li><img src="./images/icon-calendar.svg"><a href="#">Calendar</a></li>
               <li><img src="./images/icon-reminders.svg"><a href="#">Reminder</a></li>
@@ -536,7 +547,7 @@
             </div>
           </ul>
           <ul><a class='company' href="#">Company</a><img class='arrow__company' src="./images/icon-arrow-down.svg">
-            <div class="company__menu" style="display: none;">
+            <div class="company__menu_header" style="display: none;">
               <li><a href="#">History</a></li>
               <li><a href="#">Our Team</a></li>
               <li><a href="#">Blog</a></li>
@@ -616,7 +627,7 @@
         var features = document.querySelector('.features')
         .addEventListener('click', ()=>{
 
-          let featuresMenu = document.querySelector('.features__menu')
+          let featuresMenu = document.querySelector('.features__menu_header')
           let arrow = document.querySelector('.arrow')
         
           if(featuresMenu.classList.contains('features__menu_add')){
@@ -634,7 +645,7 @@
         var company = document.querySelector('.company')
         .addEventListener('click', ()=>{
 
-          let companyMenu = document.querySelector('.company__menu')
+          let companyMenu = document.querySelector('.company__menu_header')
           let arrow = document.querySelector('.arrow__company')
         
           if(companyMenu.classList.contains('company__menu_add')){
