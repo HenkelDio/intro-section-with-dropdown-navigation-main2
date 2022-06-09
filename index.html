@@ -5,22 +5,714 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap" rel="stylesheet">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+  
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  :root{
+      --almost-white: hsl(0, 0%, 98%);
+      --medium-gray: hsl(0, 0%, 41%);
+      --almost-black: hsl(0, 0%, 8%);
+  }
+
+  body{
+      position: relative;
+  }
+
+  body::-webkit-scrollbar{
+      background-color: #ccc;
+      width: 10px;
+  }
+
+  body::-webkit-scrollbar-track{
+      background-color: rgb(255, 255, 255);
+  }
+
+  body::-webkit-scrollbar-thumb{
+      background-color: #ccc;
+      border-radius: 20px;
+  }
+
+  header{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 70px;
+      padding: 0px 50px;
+      font-family: 'Epilogue', sans-serif;
+  }
+
+  .logo__header{
+      height: 70px;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  nav{
+      display: flex;
+      width: 95%;
+      height: 70px;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+
+  .menu__header {
+      display: flex;
+      margin: 0px 50px;
+  }
+
+  .menu__header img{
+      transform: rotate(180deg);
+  }
+
+  .menu__header ul{
+      margin: 0px 20px;
+      cursor: pointer;
+      position: relative;
+  }
+
+  .menu__header ul a{
+      text-decoration: none;
+      color:var(--medium-gray);
+      padding: 5px;
+  }
+
+  .menu__header ul a:hover, .form__header a:hover{
+      color: var(--almost-black);
+  }
+
+  .form__header{
+      text-align: center;
+  }
+
+  .form__header a{
+      text-decoration: none;
+      color: var(--medium-gray);
+      margin-right: 40px;
+      padding: 10px;
+  }
+
+  .form__header input{
+      font-family: 'Epilogue', sans-serif;
+      font-size: 15px;
+      color: var(--medium-gray);
+      background-color:transparent;
+      padding: 10px 20px;
+      border:2px solid var(--medium-gray);
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  .form__header input:hover{
+      color: var(--almost-black);
+      border: 2px solid var(--almost-black);
+  }
+
+  .features__menu_add{
+      position: absolute;
+      display: block !important;
+      left: -50px;
+      top: 35px;
+      width: 150px;
+      padding: 20px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 2px 10px 2px #ccc;
+      border-radius: 10px;
+
+      
+  }
+
+  .features__menu li, .features__menu a{
+      text-decoration: none;
+      list-style: none;
+  }
+
+  .features__menu li{
+      margin-bottom: 10px;
+  }
+
+  .company__menu_add{
+      position: absolute;
+      display: block !important;
+      left: 0px;
+      top: 35px;
+      width: 150px;
+      padding: 20px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 2px 10px 2px #ccc;
+      border-radius: 10px;
+  }
+
+  .company__menu li, .company__menu a{
+      text-decoration: none;
+      list-style: none;
+  }
+
+  .company__menu li{
+      margin-bottom: 10px;
+  }
+
+
+  .content__main{
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 1400px;
+      margin: 50px auto;
+  }
+
+  .content__main .content__text{
+      width: 50%;
+  }
+
+  .content__main .content__text .content__title{
+      font-size: 3rem;
+      margin-top: 115px;
+      font-family: 'Epilogue', sans-serif;
+      width: 70%;
+      color: var(--almost-black);
+  }
+
+  .content__main .content__text .content__paragraph{
+      font-size: 1.1rem;
+      margin-top: 60px;
+      width: 450px;
+      font-family: 'Epilogue', sans-serif;
+      color: var(--medium-gray);
+      line-height: 25px;
+  }
+
+  .content__main .content__image img{
+      width: 450px;
+  }
+
+  .content__main .content__text .content__button{
+      margin-top: 60px;
+  }
+
+  .content__main .content__text .content__button button{
+      width: 150px;
+      height: 50px;
+      border-radius: 15px;
+      background-color: var(--almost-black);
+      color: white;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 15px;
+      transition: 0.2s;
+      cursor: pointer;
+  }
+
+  .content__main .content__text .content__button button:hover{
+      background-color: transparent;
+      color: black;
+  }
+
+  .content__main .content__text .content__merch{
+      display: flex;
+      margin-top: 80px;
+  }
+
+  .content__main .content__text .content__merch .merch__img{
+      margin-right: 40px;
+  }
+
+  .attribution{
+      text-align: center;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 10px;
+  }
+
+  .menu__side{
+      margin-left: 65%;
+      cursor: pointer;
+  }
+
+  .content__image_mobile img{
+      width: 100%;
+  }
+
+  .content__image_mobile{
+      width: 100%; 
+  }
+
+  .menu__main{
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: absolute;
+  }
+
+  .menu{
+      position: fixed;
+      width: 70%;
+      height: 100%;
+      right:0;
+      z-index: 1;
+      background-color: rgb(255, 255, 255);
+  }
+
+  .menu__closeIcon{
+      width: 100%;
+      height: 50px;
+      padding: 10px 10px;   
+  }
+
+  .menu__closeIcon img{
+      float: right;
+  }
+
+  /*menu mobile */
+
+  .menu__container{
+      width: 100%;
+      height: 100%;
+      font-family:'Epilogue', sans-serif;
+      padding: 10px 30px;
+      line-height: 25px;
+  }
+
+  .menu__container ul a{
+      text-decoration: none;
+      color: var(--medium-gray);
+  }
+
+  .menu__container .features__menu, .menu__container .company__menu{
+      padding: 10px 30px;
+
+  }
+  .menu__container .features_sideNav{
+      line-height: 50px;
+  }
+
+
+
+  .menu__container .features_sideNav, .menu__container .company_sideNav{
+      margin-right: 15px;
+  }
+
+  .menu__container .features__menu a, .menu__container .company__menu a{
+      margin: 0 15px
+  }
+
+  .carrers{
+      line-height: 50px;
+  }
+
+
+  .button_sideNav{
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      position: absolute;
+      bottom: 0;
+  }
+
+  .button_sideNav button{
+      font-family: 'Epilogue', sans-serif;
+      background-color: transparent;
+      border:none;
+      margin-bottom: 20px;
+      color: var(--medium-gray);
+      width: 200px;
+  }
+
+  .button_sideNav button:nth-child(2){
+      border-radius: 20px;
+      border: 2px solid var(--medium-gray);
+      height: 50px;
+  }
+
+  .features__menu_mobile{
+      display: block !important;
+  }
+
+  .company__menu_mobile{
+      display: block !important;
+  }
+
+  @media (max-width: 1440px){
+      .attribution{
+          transform: translateY(-100%);
+      }
+      .content__main .content__text{
+          width: 100%;
+      }
+      .content__main .content__text .content__title{
+          font-size: 3rem;
+          margin-top: 115px;
+          font-family: 'Epilogue', sans-serif;
+          width: 72%;
+          color: var(--almost-black);
+      }
+      .content__main .content__text .content__merch .merch__img{
+          margin-right: 20px;
+      }
+
+  }
+
+  @media (max-width: 1167px){
+      .content__main .content__text .content__title{
+          font-size: 2rem;
+          margin-top: 115px;
+          font-family: 'Epilogue', sans-serif;
+          width: 100%;
+      }
+      .content__main .content__image img{
+          width: 350px;
+      }
+  }
+
+  @media (max-width: 970px){
+      nav{
+          display: none;
+      }
+      .menu__side{
+          display: block !important;
+      }
+      .content__main .content__image img{
+          width: 350px;
+      }
+      .content__main .content__text .content__title{
+          font-size: 2rem;
+          margin-top: 115px;
+          font-family: 'Epilogue', sans-serif;
+          width: 100%;
+      }
+      .content__main .content__text .content__paragraph{
+          font-size: 0.8rem;
+          margin-top: 60px;
+          width: 100%;
+          font-family: 'Epilogue', sans-serif;
+          color: var(--medium-gray);
+      }
+      .logo__header{
+          width: 100%;
+      }
+      .arrow{
+          transform: rotate(180deg);
+      }
+      .arrow__company{
+          transform: rotate(180deg);  
+      }
+      
+  }
+
+  @media (max-width: 700px){
+      nav{
+          display: none;
+      }
+      .content__main{
+          flex-direction:column-reverse;
+          margin: 0;
+          width: 100%;
+      }
+      .menu__side{
+          display: block !important;
+      }
+      .content__image{
+          display: none;
+      }
+      .content__image_mobile{
+          display: block !important;
+
+      }
+      .content__main .content__text .content__paragraph{
+          text-align:center;
+          width: 95%;
+          font-size: 1.0rem;
+          padding: 0 10px;
+          margin: 20px auto;
+          line-height: 30px;
+      }
+      .content__main .content__text{
+          width: 100%;
+      }
+      .content__main .content__text .content__title{
+          font-size: 1.4rem;
+          margin-top: 50px;
+          text-align: center;
+          font-family: 'Epilogue', sans-serif;
+          width: 100%;
+          padding: 0 10px;
+      }
+      .content__main .content__text .content__merch{
+          display: flex;
+          margin-top: 0px;
+          width: 100%;
+
+      }
+      .content__main .content__text .content__merch .merch__img{
+          margin: 50px auto;
+          text-align: center;
+          
+      }
+      .content__main .content__text .content__merch .merch__img img{
+          width: 80%;
+      }
+      header{
+          padding: 0 10px;
+      }
+      .content__main .content__text .content__button{
+          width: 100%;
+          text-align: center;
+          margin-top: 25px;
+      }
+    
+  }
+
   </style>
 </head>
 <body>
 
-  <h1>Hello</h1>
-  
-  <!-- <div class="attribution">
+  <div class="menu__main" style="display: none;">
+    <div class="menu">
+    
+      <div class="menu__closeIcon">
+        <img class="closeMenu" src="./images/icon-close-menu.svg">
+      </div>
+
+      <div class="menu__container">
+        <ul>
+          <ul><a class="features_sideNav" href="#">Features</a><img class='arrow' src="./images/icon-arrow-down.svg">
+            <div class="features__menu" style='display:none'>
+              <li><img src="./images/icon-todo.svg"><a href="#">Todo List</a></li>
+              <li><img src="./images/icon-calendar.svg"><a href="#">Calendar</a></li>
+              <li><img src="./images/icon-reminders.svg"><a href="#">Reminder</a></li>
+              <li><img src="./images/icon-planning.svg"><a href="#">Planning</a></li>
+            </div>
+          </ul>
+          <ul><a class='company_sideNav' href="#">Company</a><img class='arrow__company' src="./images/icon-arrow-down.svg">
+            <div class="company__menu" style='display:none'>
+              <li><a href="#">History</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Blog</a></li>
+            </div>
+          </ul>
+          <ul class="carrers"><a href="#">Carrers</a></ul>
+          <ul class="about"><a href="#">About</a></ul>
+        </ul>
+
+        <div class="button_sideNav">
+          <button>
+            Login
+          </button>
+          <button>
+            Register
+          </button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    
+
+  <header>
+    <div class="logo__header">
+      <img src="./images/logo.svg" alt="snap logo">
+      <div style="display:none" class="menu__side">
+        <img class='openMenu' src="./images/icon-menu.svg">
+      </div>
+    </div>
+      <nav>
+        <ul class="menu__header">
+          <ul><a class="features" href="#">Features</a><img class='arrow' src="./images/icon-arrow-down.svg">
+            <div class="features__menu" style="display: none;">
+              <li><img src="./images/icon-todo.svg"><a href="#">Todo List</a></li>
+              <li><img src="./images/icon-calendar.svg"><a href="#">Calendar</a></li>
+              <li><img src="./images/icon-reminders.svg"><a href="#">Reminder</a></li>
+              <li><img src="./images/icon-planning.svg"><a href="#">Planning</a></li>
+            </div>
+          </ul>
+          <ul><a class='company' href="#">Company</a><img class='arrow__company' src="./images/icon-arrow-down.svg">
+            <div class="company__menu" style="display: none;">
+              <li><a href="#">History</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Blog</a></li>
+            </div>
+          </ul>
+          <ul><a href="#">Carrers</a></ul>
+          <ul><a href="#">About</a></ul>
+        </ul>
+
+      <div class="form__header">
+        <a href="#">Login</a>
+        <input type="button" value="Register">
+      </div>
+    </nav>
+
+   
+
+  </header>
+  <section>
+    <div class="content__main">
+
+      <div class="content__text">
+          <div class="content__title">
+            <h1>Make Remote work</h1>
+          </div>
+          <div class="content__paragraph">
+            <p>
+              Get your team in sync, no matter your location.
+              Streamline processes, create team rituals, and watch
+              productivity soar.
+            </p>
+          </div>
+          <div class="content__button">
+            <button>
+              Learn more
+            </button>
+          </div>
+          <div class="content__merch">
+            <div class="merch__img">
+              <img src="./images/client-databiz.svg">
+            </div>
+            <div class="merch__img">
+              <img src="./images/client-audiophile.svg">
+            </div>
+            <div class="merch__img">
+              <img src="./images/client-meet.svg">
+            </div>
+            <div class="merch__img">
+              <img src="./images/client-maker.svg">
+            </div>
+          </div>
+      </div>
+
+      <div class="content__image">
+        <img src="./images/image-hero-desktop.png">
+      </div>
+
+      <div  style="display:none" class="content__image_mobile">
+        <img src="./images/image-hero-mobile.png">
+      </div>
+
+    </div>
+  </section>
+
+  <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Willian</a>.
-  </div> -->
+    Coded by <a href="https://github.com/HenkelDio/intro-section-with-dropdown-navigation-main2" target="_blank">Willian Henkel</a>.
+  </div>
+
+
+
+
+    <script>
+
+
+
+        var features = document.querySelector('.features')
+        .addEventListener('click', ()=>{
+
+          let featuresMenu = document.querySelector('.features__menu')
+          let arrow = document.querySelector('.arrow')
+        
+          if(featuresMenu.classList.contains('features__menu_add')){
+            arrow.style.transform = "rotate(180deg)";
+            featuresMenu.classList.remove('features__menu_add')
+            
+          } else (
+            arrow.style.transform = "rotate(0deg)",
+            featuresMenu.classList.add('features__menu_add')
+          )
+        })
+
+
+        //company
+        var company = document.querySelector('.company')
+        .addEventListener('click', ()=>{
+
+          let companyMenu = document.querySelector('.company__menu')
+          let arrow = document.querySelector('.arrow__company')
+        
+          if(companyMenu.classList.contains('company__menu_add')){
+            arrow.style.transform = "rotate(180deg)";
+            companyMenu.classList.remove('company__menu_add')
+          } else (
+            arrow.style.transform = "rotate(0deg)",
+            companyMenu.classList.add('company__menu_add')
+          )
+        })
+
+        
+        //menu mobile
+
+
+        var featuresMobile = document.querySelector('.features_sideNav')
+        .addEventListener('click', ()=>{
+
+          let featuresMenu = document.querySelector('.features__menu')
+          let arrow = document.querySelector('.arrow')
+        
+          if(featuresMenu.classList.contains('features__menu_mobile')){
+            arrow.style.transform = "rotate(180deg)";
+            featuresMenu.classList.remove('features__menu_mobile')
+            
+          } else (
+            arrow.style.transform = "rotate(0deg)",
+            featuresMenu.classList.add('features__menu_mobile')
+          )
+        })
+
+
+        //company
+        var company = document.querySelector('.company_sideNav')
+        .addEventListener('click', ()=>{
+
+          let companyMenu = document.querySelector('.company__menu')
+          let arrow = document.querySelector('.arrow__company')
+        
+          if(companyMenu.classList.contains('company__menu_mobile')){
+            arrow.style.transform = "rotate(180deg)";
+            companyMenu.classList.remove('company__menu_mobile')
+          } else (
+            arrow.style.transform = "rotate(0deg)",
+            companyMenu.classList.add('company__menu_mobile')
+          )
+        })
+
+
+        //open side menu
+        var openMenu = document.querySelector('.openMenu')
+        .addEventListener('click', ()=>{
+          var menu = document.querySelector('.menu__main')
+          .style.display = 'flex'
+        })
+
+
+        //close side menu
+
+        var closeMenu = document.querySelector('.closeMenu')
+        .addEventListener('click', ()=>{
+          var menu = document.querySelector('.menu__main')
+          .style.display = 'none'
+        })
+
+
+    </script>
+
+
+  
+  
+
+
+
+
+
+
+
+
 </body>
 </html>
